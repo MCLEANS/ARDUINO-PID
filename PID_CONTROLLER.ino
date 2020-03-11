@@ -1,7 +1,7 @@
 //--------PID variables--------------------------------------
-double Kp = 2;
-double Ki = 0;
-double Kd = 0;
+double Kp = 5;
+double Ki = 10;
+double Kd = 20;
 
 double sample_period = 200;
 unsigned long last_time;
@@ -9,7 +9,7 @@ double total_error = 0;
 double last_error = 0;
 bool error_type = true; //false is negative error true is positive error
 double control_signal;
-double actual_ph_value = 20;
+double actual_ph_value = 90;
 double desired_ph_value = 16;
 double error;
 //---------------------------------------------------------------------------
@@ -58,8 +58,8 @@ void loop() {
   Serial.print(",");
   Serial.println(actual_ph_value);
 
-if(error_type == false) if (error < 0) actual_ph_value -= 0.01;
-if(error_type == true) if (error > 0) actual_ph_value += 0.01;
+if(error_type == false) if (error < 0) actual_ph_value -= 1;
+if(error_type == true) if (error > 0) actual_ph_value += 1;
   if(error == 0) total_error =0;
 
 
